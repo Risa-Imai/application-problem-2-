@@ -3,6 +3,7 @@ class BooksController < ApplicationController
   def show
     @newbook = Book.new
     @book = Book.find(params[:id])
+    @book_comment = BookComment.new
     @user = @book.user
   end
 
@@ -38,7 +39,7 @@ class BooksController < ApplicationController
     if @book.update(book_params)
       redirect_to book_path(@book), notice: "You have updated book successfully."
     else
-      render "edit"
+      render :edit
     end
   end
 
