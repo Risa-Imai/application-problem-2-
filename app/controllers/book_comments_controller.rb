@@ -11,10 +11,10 @@ class BookCommentsController < ApplicationController
   end
 
   def destroy
-    @books=Book.find(params[:book_id])
-    @book_comment=BookComment.find_by(id: params[:id], book_id: params[:book_id])
-    @book_comment.destroy
-    @book_comment = BookComment.new
+    @book = Book.find(params[:book_id])
+    @book_comment = BookComment.new    
+    book_comment = BookComment.find_by(id: params[:id], book_id: params[:book_id])
+    book_comment.destroy
     #refroute = Rails.application.routes.recognize_path(request.referer)
     #@book = Book.find(refroute[:id])
     #@book = Book.find(params[:book_id])
