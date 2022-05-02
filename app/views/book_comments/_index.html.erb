@@ -1,5 +1,5 @@
   <table>
-    <!-- <tbody>をつけていたら非同期通信がうまくいかなかった -->
+    <tbody>
     <% book.book_comments.each do |book_comment| %>
       <tr>
         <td>
@@ -16,5 +16,4 @@
         </td>
       </tr>
     <% end %>
-    <!-- </tbody>をつけていたら非同期通信がうまくいかなかった -->
   </table>
