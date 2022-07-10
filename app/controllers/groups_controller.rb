@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
-  
+
   def new
     @group = Group.new
   end
@@ -16,12 +16,6 @@ class GroupsController < ApplicationController
     @book = Book.new
     @group = Group.find(params[:id])
     @user = current_user
-  end
-
-  def join
-    @group = Group.find(params[:group_id])
-    @group.users << current_user
-    redirect_to groups_path
   end
 
   def create
@@ -43,13 +37,6 @@ class GroupsController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def destroy
-    @group = Group.find(params[:id])
-  #current_userは、@group.userから消される
-    @group.users.delete(current_user)
-    redirect_to groups_path
   end
 
   private
